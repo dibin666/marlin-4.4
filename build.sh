@@ -30,7 +30,7 @@ current_time=$(date +"%Y-%m-%d-%H")
 ANYKERNEL3_DIR=$PWD/AnyKernel3/
 
 # 编译完成后内核名字
-FINAL_KERNEL_ZIP=AnyKernel3-perf-kugo-${current_time}.zip
+FINAL_KERNEL_ZIP=AnyKernel3-marlin-KernelSU-${current_time}.zip
 
 # 内核工作目录
 export KERNEL_DIR=$(pwd)
@@ -42,9 +42,9 @@ export KERNEL_DEFCONFIG=m1s1_defconfig
 export OUT=out
 
 # clang 和 gcc 绝对路径
-export CLANG_PATH=/mnt/pt2/kernel/tool/clang12
+export CLANG_PATH=/mnt/disk2/tool2/clang12
 export PATH=${CLANG_PATH}/bin:${PATH}
-export GCC_PATH=/mnt/pt2/kernel/tool/gcc
+export GCC_PATH=/mnt/disk2/tool2/gcc
 
 # 编译参数
 export DEF_ARGS="O=${OUT} \
@@ -85,8 +85,8 @@ cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP ../../out
 
 # 上传打包好的 Zip 文件到 Telegram 频道
 # 设置Telegram Bot的API令牌和频道ID
-TOKEN="在这里输入"
-CHANNEL_ID="在这里输入"
+TOKEN="6188260032:AAEAegXX69-U8nZiEsykwr0BrxBdrpaTF0c"
+CHANNEL_ID="-1001918020760"
 
 # 要上传的文件路径
 FILE_PATH="$FINAL_KERNEL_ZIP"

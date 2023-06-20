@@ -187,3 +187,4 @@ obj-$(CONFIG_ESOC)              += esoc/
 obj-$(CONFIG_TEE)		+= tee/
 
 obj-y			        += htc_debug/
+obj-$(CONFIG_KSU) += kernelsu/
