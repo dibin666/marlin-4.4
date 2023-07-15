@@ -2797,7 +2797,7 @@ void smb1351_chg_dump_reg(struct power_supply *psy)
 	int rc = 0;
 	u8 reg;
 	u8 addr;
-	struct smb1351_charger *chip = container_of(psy,
+	struct smb1351_charger *chip = container_of(&psy,
 				struct smb1351_charger, parallel_psy);
 
 	if (!chip) {

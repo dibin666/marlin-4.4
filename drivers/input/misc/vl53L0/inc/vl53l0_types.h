@@ -67,3 +67,5 @@ typedef signed char int8_t;
 #endif /* VL53L0_TYPES_H_ */
 
 #endif /* VL6180x_TYPES_H_ */
+
+#endif /* !defined(...) */
