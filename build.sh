@@ -61,29 +61,11 @@ export BUILD_ARGS="-j$(nproc --all) ${DEF_ARGS}"
 make ${DEF_ARGS} ${KERNEL_DEFCONFIG}
 make ${BUILD_ARGS}
 
-# 复制编译出的文件到 AnyKernel3 目录
-if [[ -f out/arch/arm64/boot/Image.gz-dtb ]]; then
-  cp out/arch/arm64/boot/Image.gz-dtb AnyKernel3/Image.gz-dtb
-elif [[ -f out/arch/arm64/boot/Image-dtb ]]; then
-  cp out/arch/arm64/boot/Image-dtb AnyKernel3/Image-dtb
-elif [[ -f out/arch/arm64/boot/Image.gz ]]; then
-  cp out/arch/arm64/boot/Image.gz AnyKernel3/Image.gz
-elif [[ -f out/arch/arm64/boot/Image ]]; then
-  cp out/arch/arm64/boot/Image AnyKernel3/Image
-fi
-
-if [ -f out/arch/arm64/boot/dtbo.img ]; then
-  cp out/arch/arm64/boot/dtbo.img AnyKernel3/dtbo.img
-fi
-
-# 打包内核为可刷入 Zip 文件
-cd $ANYKERNEL3_DIR/
-zip -r $FINAL_KERNEL_ZIP * -x README $FINAL_KERNEL_ZIP
-
-# 复制打包好的 Zip 文件到指定的目录
-cp $ANYKERNEL3_DIR/$FINAL_KERNEL_ZIP /mnt/disk/out
+# 复制编译出的内核到外部目录，请使用magiskboot对原boot进行打包，Android-Image-Kitchen会报错
+cp out/arch/arm64/boot/Image /mnt/disk/out
 
 # 清理目录
 cd ..
 rm -rf KernelSU
 rm -rf AnyKernel3
+rm -rf out
